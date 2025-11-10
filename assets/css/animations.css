@@ -66,6 +66,14 @@ nav {
 }
 
 /* Carga inicial suave */
+body {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+body.loaded {
+    opacity: 1;
+}
 
 /* Mejoras responsivas */
 @media (max-width: 768px) {

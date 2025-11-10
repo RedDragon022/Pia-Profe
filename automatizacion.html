@@ -6,25 +6,19 @@
     <link rel="stylesheet" href="Estilos.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Servicio: Automatización</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/faq-handler.js" defer></script>
+    <script src="assets/js/form-handler.js" defer></script>
 </head>
 <body>
 
-    <header id="inicio">
-        <h1>INVOMEX</h1>
+    <header>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Regresar
+        </a>
+        <h1>Automatización</h1>
     </header>
-
-    <nav>
-        <a href="index.html#inicio">Inicio</a>
-        <a href="index.html#nosotros">Nosotros</a>
-        <a href="index.html#Servicios">Servicios</a>
-        <a href="index.html#Contacto">Contacto</a>
-        <a href="index.html#Servicios" class="back-button">Regresar</a>
-    </nav>
-
-    <section class="service-hero reveal">
-        <h2>Automatización</h2>
-    </section>
 
     <main class="service-layout">
 
@@ -252,58 +246,6 @@
     <footer>
         <p>&copy; 2025 INVOMEX</p>
     </footer>
-    
-    <!-- Scripts para FAQ -->
-    <script>
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const answer = button.nextElementSibling;
-                
-                // Toggle actual
-                faqItem.classList.toggle('active');
-                answer.classList.toggle('active');
-                
-                // Cerrar otros
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    if (item !== faqItem && item.classList.contains('active')) {
-                        item.classList.remove('active');
-                        item.querySelector('.faq-answer').classList.remove('active');
-                    }
-                });
-            });
-        });
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-    function mostrarConfirmacionInterna(event) {
-        event.preventDefault(); 
-
-        const formContainer = document.getElementById('formulario-contacto');
-        const successMessage = document.getElementById('mensaje-exito');
-        const form = formContainer.querySelector('form');
-
-        if (!form.reportValidity()) {
-            return false;
-        }
-
-        formContainer.style.display = 'none';
-        successMessage.style.display = 'block';
-
-        Swal.fire({
-            icon: "success",
-            title: "¡Solicitud enviada con éxito!",
-            text: "Gracias por su interés en Automatización. Un especialista se pondrá en contacto con usted en las próximas 24 horas.",
-            confirmButtonText: "Aceptar",
-            confirmButtonColor: "#3085d6"
-        }).then(() => {
-            window.location.href = "index.html";
-        });
-
-        return false; 
-    }
-    </script>
     
 </body>
 </html>

@@ -7,45 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Servicio: Desarrollo de software</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="assets/js/form-validation.js" defer></script>
     <script src="assets/js/animations.js" defer></script>
-
-    <!-- Scripts para FAQ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.faq-question').forEach(button => {
-                button.addEventListener('click', () => {
-                    const faqItem = button.parentElement;
-                    const answer = button.nextElementSibling;
-                    
-                    // Toggle actual
-                    faqItem.classList.toggle('active');
-                    answer.classList.toggle('active');
-                    
-                    // Cerrar otros
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== faqItem && item.classList.contains('active')) {
-                            item.classList.remove('active');
-                            item.querySelector('.faq-answer').classList.remove('active');
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="assets/js/faq-handler.js" defer></script>
+    <script src="assets/js/form-validation.js" defer></script>
 </head>
 <body>
 
     <header>
         <a href="index.html" class="back-button">
-            Regresar
+            <i class="fas fa-arrow-left"></i> Regresar
         </a>
-        <h1>Desarrollo de software</h1>
+        <h1>Desarrollo de Software</h1>
     </header>
-
-    <section class="service-hero reveal">
-        <h2>Desarrollo de Software</h2>
-    </section>
 
     <main class="service-layout">
         <div class="service-info">
@@ -148,7 +121,7 @@
                 </button>
             </div>
         </section>
-        git 
+        
         </section>
         </div>
     </main>

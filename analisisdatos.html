@@ -8,43 +8,17 @@
     <title>Servicio: Análisis de datos</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/animations.js" defer></script>
-
-    <!-- Scripts para FAQ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.faq-question').forEach(button => {
-                button.addEventListener('click', () => {
-                    const faqItem = button.parentElement;
-                    const answer = button.nextElementSibling;
-                    
-                    // Toggle actual
-                    faqItem.classList.toggle('active');
-                    answer.classList.toggle('active');
-                    
-                    // Cerrar otros
-                    document.querySelectorAll('.faq-item').forEach(item => {
-                        if (item !== faqItem && item.classList.contains('active')) {
-                            item.classList.remove('active');
-                            item.querySelector('.faq-answer').classList.remove('active');
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="assets/js/faq-handler.js" defer></script>
+    <script src="assets/js/form-handler.js" defer></script>
 </head>
 <body>
 
     <header>
         <a href="index.html" class="back-button">
-            Regresar
+            <i class="fas fa-arrow-left"></i> Regresar
         </a>
-        <h1>Análisis de datos</h1>
+        <h1>Análisis de Datos</h1>
     </header>
-
-    <section class="service-hero reveal">
-        <h2>Análisis de Datos</h2>
-    </section>
 
     <main class="service-layout">
         <div class="service-info">
@@ -132,38 +106,6 @@
                 </button>
             </div>
         </section>
-
-        <script>
-        function mostrarConfirmacionInterna(event) {
-            event.preventDefault(); // Evita que el formulario recargue la página
-
-            const formContainer = document.getElementById('formulario-contacto');
-            const successMessage = document.getElementById('mensaje-exito');
-            const form = formContainer.querySelector('form');
-
-            // Validación de los campos
-            if (!form.reportValidity()) {
-                return false;
-            }
-
-            // Oculta el formulario y muestra el mensaje de éxito
-            formContainer.style.display = 'none';
-            successMessage.style.display = 'block';
-
-            // Muestra el mensaje de confirmación 
-            Swal.fire({
-                icon: "success",
-                title: "¡Solicitud enviada con éxito!",
-                text: "Gracias por su interés en Análisis de datos. Un especialista se pondrá en contacto con usted en las próximas 24 horas.",
-                confirmButtonText: "Aceptar",
-                confirmButtonColor: "#3085d6"
-            }).then(() => {
-                window.location.href = "index.html";
-            });
-
-            return false; 
-        }
-        </script>
         </div>
     </main>
 

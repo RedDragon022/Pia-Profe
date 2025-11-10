@@ -28,7 +28,7 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// Observer para animaciones de entrada
+// Observer para animaciones de entrada - maneja tanto .reveal como .fade-in-element
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -45,39 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
         statsObserver.observe(card);
     });
 
-    // Observar elementos para animaciones de entrada
-    document.querySelectorAll('.fade-in-element').forEach(element => {
+    // Observar elementos con clase .reveal para animaciones de entrada
+    document.querySelectorAll('.reveal').forEach(element => {
         fadeObserver.observe(element);
     });
 
-    // Animaciones suaves para FAQ
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const allAnswers = document.querySelectorAll('.faq-answer');
-            const allQuestions = document.querySelectorAll('.faq-question');
-            
-            allAnswers.forEach(a => {
-                if (a !== answer) {
-                    a.style.maxHeight = null;
-                    a.classList.remove('active');
-                }
-            });
-            
-            allQuestions.forEach(q => {
-                if (q !== question) {
-                    q.classList.remove('active');
-                }
-            });
-            
-            question.classList.toggle('active');
-            answer.classList.toggle('active');
-            
-            if (answer.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            } else {
-                answer.style.maxHeight = null;
-            }
-        });
+    // Observar elementos con clase .fade-in-element para animaciones de entrada
+    document.querySelectorAll('.fade-in-element').forEach(element => {
+        fadeObserver.observe(element);
     });
 });
