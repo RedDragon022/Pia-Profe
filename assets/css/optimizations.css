@@ -1,0 +1,114 @@
+/* Optimizaciones de rendimiento y recursos */
+
+/* Contenedores de imágenes optimizados */
+.optimized-image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    overflow: hidden;
+    background-color: #f0f0f0; /* Placeholder color */
+}
+
+.optimized-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Grid responsivo para servicios */
+.servicios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--espacio-l);
+    padding: var(--espacio-m);
+}
+
+/* Optimización de tarjetas */
+.servicio {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-fondo-claro);
+    contain: content; /* Optimización de rendimiento */
+}
+
+.servicio img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+/* Optimización de fuentes: usamos Google Fonts con display=swap y fallbacks en CSS */
+
+/* Container queries para elementos responsive */
+.card {
+    container-type: inline-size;
+    container-name: card;
+}
+
+@container card (max-width: 768px) {
+    .mission-vision-values {
+        flex-direction: column;
+    }
+}
+
+/* Mejoras de rendimiento */
+.will-animate {
+    will-change: transform, opacity;
+}
+
+/* Media queries optimizados */
+@media (max-width: 1200px) {
+    :root {
+        --espacio-contenido: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --espacio-contenido: 1rem;
+        --tamano-texto-base: 14px;
+    }
+    
+    .servicio {
+        margin: 0 calc(-1 * var(--espacio-contenido));
+        width: calc(100% + (2 * var(--espacio-contenido)));
+    }
+}
+
+/* Optimizaciones de rendimiento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        color: black;
+        background: white;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

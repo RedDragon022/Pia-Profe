@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Servicio: Desarrollo de software</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/form-validation.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+
+    <!-- Scripts para FAQ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const faqItem = button.parentElement;
+                    const answer = button.nextElementSibling;
+                    
+                    // Toggle actual
+                    faqItem.classList.toggle('active');
+                    answer.classList.toggle('active');
+                    
+                    // Cerrar otros
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem && item.classList.contains('active')) {
+                            item.classList.remove('active');
+                            item.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-button">
+            Regresar
+        </a>
+        <h1>Desarrollo de software</h1>
+    </header>
+
+    <section class="service-hero reveal">
+        <h2>Desarrollo de Software</h2>
+    </section>
+
+    <main class="service-layout">
+        <div class="service-info">
+            <h2>¿Qué Ofrece el servicio de Desarrollo de software?</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p>
+                    Ofrecemos la creación de soluciones de software a la medida que están diseñadas para encajar perfectamente en los requerimientos únicos de su 
+                    negocio, sin las limitaciones de los productos comerciales. Nos especializamos en la construcción de aplicaciones web, plataformas móviles y 
+                    sistemas empresariales. Utilizamos la metodología ágil de scrum para asegurar entregas funcionales y frecuentes, garantizando que el resultado 
+                    final sea intuitivo, robusto y escalable, integrándose sin problemas con sus sistemas ya existentes.
+                </p>
+            </div>
+
+            
+            <h3>¿Que resultados concretos puedo esperar al invertir en Desarrollo de software?</h3>
+            
+            <ul style="list-style-type: disc; max-width: 800px; margin: 0 auto; text-align: left;" class="reveal">
+                <li>
+                    <strong>Maxima eficiencia operativa:</strong> Al automatizar flujos de trabajo internos específicos y eliminar la necesidad de procesos manuales, su personal puede ser mucho más productivo.
+                </li>
+                <li>
+                    <strong>Ventaja competitiva unica:</strong> Obtiene una herramienta digital exclusiva que resuelve sus problemas de negocio de una manera que su competencia, que utiliza software estándar, no puede replicar.
+                </li>
+                <li>
+                    <strong>Control total y escalabilidad:</strong> Usted es dueño del código, lo que le permite modificar, escalar y añadir funcionalidades a medida que su negocio evoluciona, sin depender de un proveedor externo o de licencias costosas.
+                </li>
+                <li>
+                    <strong>Mejora de la experencia del usuario:</strong> Ya sea para sus empleados o sus clientes, el software diseñado a medida es inherentemente más fácil de usar, lo que reduce la curva de aprendizaje y aumenta la satisfacción.
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="service-form-wrapper">
+            <section class="service-request-form">
+            <div id="formulario-contacto">
+                <h2>Solicitar Información del Servicio</h2>
+                <p>Complete el siguiente formulario y uno de nuestros especialistas en Desarrollo de software se pondrá en contacto con usted en las próximas 24 horas.</p>
+
+                <form id="contact-form" action="#" novalidate>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required 
+                               placeholder="Ej. Juan Pérez" 
+                               class="form-field">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="empresa">Empresa (Opcional):</label>
+                        <input type="text" id="empresa" name="empresa" 
+                               placeholder="Ej. Empresa S.A. de C.V." 
+                               class="form-field">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="ejemplo@dominio.com" 
+                               class="form-field">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required 
+                               placeholder="Ej. +52 (81) 1234-5678" 
+                               class="form-field">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio-interes">Servicio de Interés:</label>
+                        <input type="text" id="servicio-interes" name="servicio-interes" 
+                               value="Desarrollo de software" readonly 
+                               class="form-field">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Describa brevemente su requerimiento:</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required 
+                                  placeholder="Describa su proyecto o necesidad..." 
+                                  class="form-field"></textarea>
+                        <div class="caracteres-contador"></div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Solicitar Contacto
+                    </button>
+                </form>
+            </div>
+            
+            <div id="mensaje-exito" style="display: none; text-align: center; padding: 50px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #f4fff4;">
+                <h2 style="color: #4CAF50;">¡Solicitud Enviada con Éxito!</h2>
+                <p style="font-size: 1.1em;">
+                    Gracias por su interés en Desarrollo de software. Su solicitud ha sido recibida correctamente. 
+                    Un especialista se pondrá en contacto con usted en las próximas 24 horas.
+                </p>
+
+                <button style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
+                        onclick="window.location.href = 'index.html';">
+                    Volver a Servicios Principales
+                </button>
+            </div>
+        </section>
+        
+        </section>
+        </div>
+    </main>
+
+    <section class="casos-exito reveal">
+        <h2>Casos de Éxito en Desarrollo de Software</h2>
+        <div class="casos-exito-grid reveal">
+            <article class="caso-exito-card reveal">
+                <picture>
+                    <source type="image/webp" srcset="assets/images/casos-exito/desarrollo/fintech-app-480.webp 480w, assets/images/casos-exito/desarrollo/fintech-app-768.webp 768w, assets/images/casos-exito/desarrollo/fintech-app-1024.webp 1024w, assets/images/casos-exito/desarrollo/fintech-app-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
+                    <img src="assets/images/casos-exito/desarrollo/fintech-app-1024.jpg" srcset="assets/images/casos-exito/desarrollo/fintech-app-480.jpg 480w, assets/images/casos-exito/desarrollo/fintech-app-768.jpg 768w, assets/images/casos-exito/desarrollo/fintech-app-1024.jpg 1024w, assets/images/casos-exito/desarrollo/fintech-app-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito aplicación fintech" class="caso-exito-imagen" loading="lazy" decoding="async">
+                </picture>
+                <div class="caso-exito-contenido">
+                    <h3 class="caso-exito-titulo">App Fintech</h3>
+                    <p>Desarrollo de plataforma de pagos móviles y gestión financiera personal.</p>
+                    <div class="caso-exito-stats">
+                        <div class="stat-item">
+                            <div class="stat-numero">1M+</div>
+                            <div class="stat-label">Usuarios Activos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-numero">4.8</div>
+                            <div class="stat-label">App Rating</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="caso-exito-card reveal">
+                <picture>
+                    <source type="image/webp" srcset="assets/images/casos-exito/desarrollo/erp-system-480.webp 480w, assets/images/casos-exito/desarrollo/erp-system-768.webp 768w, assets/images/casos-exito/desarrollo/erp-system-1024.webp 1024w, assets/images/casos-exito/desarrollo/erp-system-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
+                    <img src="assets/images/casos-exito/desarrollo/erp-system-1024.jpg" srcset="assets/images/casos-exito/desarrollo/erp-system-480.jpg 480w, assets/images/casos-exito/desarrollo/erp-system-768.jpg 768w, assets/images/casos-exito/desarrollo/erp-system-1024.jpg 1024w, assets/images/casos-exito/desarrollo/erp-system-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito sistema ERP" class="caso-exito-imagen" loading="lazy" decoding="async">
+                </picture>
+                <div class="caso-exito-contenido">
+                    <h3 class="caso-exito-titulo">ERP Empresarial</h3>
+                    <p>Sistema integral de gestión empresarial para manufactura.</p>
+                    <div class="caso-exito-stats">
+                        <div class="stat-item">
+                            <div class="stat-numero">50%</div>
+                            <div class="stat-label">Más Eficiencia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-numero">35%</div>
+                            <div class="stat-label">Menos Costos</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="caso-exito-card reveal">
+                <picture>
+                    <source type="image/webp" srcset="assets/images/casos-exito/desarrollo/ecommerce-platform-480.webp 480w, assets/images/casos-exito/desarrollo/ecommerce-platform-768.webp 768w, assets/images/casos-exito/desarrollo/ecommerce-platform-1024.webp 1024w, assets/images/casos-exito/desarrollo/ecommerce-platform-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
+                    <img src="assets/images/casos-exito/desarrollo/ecommerce-platform-1024.jpg" srcset="assets/images/casos-exito/desarrollo/ecommerce-platform-480.jpg 480w, assets/images/casos-exito/desarrollo/ecommerce-platform-768.jpg 768w, assets/images/casos-exito/desarrollo/ecommerce-platform-1024.jpg 1024w, assets/images/casos-exito/desarrollo/ecommerce-platform-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito plataforma e-commerce" class="caso-exito-imagen" loading="lazy" decoding="async">
+                </picture>
+                <div class="caso-exito-contenido">
+                    <h3 class="caso-exito-titulo">E-commerce B2B</h3>
+                    <p>Plataforma de comercio electrónico mayorista multinacional.</p>
+                    <div class="caso-exito-stats">
+                        <div class="stat-item">
+                            <div class="stat-numero">300%</div>
+                            <div class="stat-label">Más Ventas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-numero">99.9%</div>
+                            <div class="stat-label">Uptime</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="faq-section reveal">
+        <h2>Preguntas Frecuentes sobre Desarrollo de Software</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué metodología de desarrollo utilizan?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    Utilizamos metodologías ágiles (principalmente Scrum) adaptadas a las necesidades de cada cliente. 
+                    Trabajamos en sprints de 2-4 semanas con entregas incrementales y demos regulares. Esto permite 
+                    mayor flexibilidad, feedback temprano y ajustes rápidos según las necesidades del proyecto.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué tecnologías y frameworks utilizan?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    Nos especializamos en una amplia gama de tecnologías modernas incluyendo React, Angular y Vue.js 
+                    para frontend; Node.js, Python y Java para backend; React Native y Flutter para apps móviles; 
+                    y AWS, Azure y Google Cloud para infraestructura cloud. Seleccionamos la stack más adecuada 
+                    según los requisitos específicos del proyecto.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Cómo manejan el mantenimiento post-lanzamiento?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    Ofrecemos planes de mantenimiento flexibles que incluyen monitoreo 24/7, actualizaciones de 
+                    seguridad, corrección de bugs, y mejoras continuas. También proporcionamos SLAs garantizados, 
+                    soporte técnico dedicado y actualizaciones periódicas de funcionalidades según las necesidades 
+                    del negocio.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Cuál es el proceso de desarrollo típico?
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-answer">
+                    Nuestro proceso incluye: 1) Análisis y planificación detallada, 2) Diseño de arquitectura y UX/UI, 
+                    3) Desarrollo iterativo con pruebas continuas, 4) Control de calidad riguroso, 5) Despliegue y 
+                    pruebas en producción, 6) Capacitación de usuarios, y 7) Soporte post-lanzamiento. Cada fase 
+                    incluye puntos de validación con el cliente.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 INVOMEX</p>
+    </footer>
+    
+</body>
+</html>

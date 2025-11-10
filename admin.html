@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Contactos</title>
+  <link rel="stylesheet" href="Estilos.css">
+  <style>
+    body { text-align: center; }
+    main { max-width: 960px; margin: 2rem auto; text-align: left; }
+    #login-form, #admin-content {
+        border: 1px solid #ddd;
+        padding: 2rem;
+        border-radius: 8px;
+        background: #f9f9f9;
+    }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: .5rem; }
+    input { width: 100%; padding: .5rem; }
+    button { padding: .75rem 1.5rem; cursor: pointer; }
+    #error-message { color: red; margin-bottom: 1rem; }
+    table { width:100%; border-collapse:collapse; margin-top: 1rem; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+    th { background:#f4f4f4; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Administración de Contactos</h1>
+    <p><a href="index.html">Volver al sitio</a></p>
+  </header>
+
+  <main>
+    <!-- Login Form -->
+    <div id="login-view">
+      <form id="login-form">
+        <h2>Iniciar Sesión</h2>
+        <div id="error-message"></div>
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" required>
+        </div>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <!-- Admin Content (hidden by default) -->
+    <div id="admin-content" style="display: none;">
+      <h2>Contactos Recibidos</h2>
+      <button id="logout">Cerrar Sesión</button>
+      <hr>
+      <button id="refresh">Refrescar</button>
+      <button id="export">Exportar CSV</button>
+      <div id="list"></div>
+    </div>
+  </main>
+
+  <script>
+    const loginView = document.getElementById('login-view');
+    const adminContent = document.getElementById('admin-content');
+    const loginForm = document.getElementById('login-form');
+    const errorMessage = document.getElementById('error-message');
+    const logoutButton = document.getElementById('logout');
+    const TOKEN_KEY = 'invomex_auth_token';
+
+    // --- Authentication Logic ---
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMessage.textContent = '';
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          sessionStorage.setItem(TOKEN_KEY, data.token);
+          showAdminView();
+        } else {
+          errorMessage.textContent = data.error || 'Error al iniciar sesión.';
+        }
+      } catch (err) {
+        errorMessage.textContent = 'Error de conexión con el servidor.';
+      }
+    });
+
+    logoutButton.addEventListener('click', () => {
+      sessionStorage.removeItem(TOKEN_KEY);
+      showLoginView();
+    });
+
+    function showLoginView() {
+      loginView.style.display = 'block';
+      adminContent.style.display = 'none';
+    }
+
+    function showAdminView() {
+      loginView.style.display = 'none';
+      adminContent.style.display = 'block';
+      loadContacts();
+    }
+
+    // --- Contact Management Logic ---
+
+    async function fetchContacts() {
+      const token = sessionStorage.getItem(TOKEN_KEY);
+      const res = await fetch('/api/contacts', {
+        headers: { 'Authorization': token }
+      });
+
+      if (res.status === 403) {
+          // Token is invalid or expired
+          logoutButton.click();
+          throw new Error('Sesión inválida. Por favor, inicie sesión de nuevo.');
+      }
+      if (!res.ok) {
+          throw new Error('No fue posible obtener los contactos');
+      }
+      const body = await res.json();
+      return body.contacts || [];
+    }
+
+    function renderTable(items) {
+      if (!items.length) {
+        document.getElementById('list').innerHTML = '<p>No hay registros</p>';
+        return;
+      }
+      const rows = items.map(c => `
+        <tr>
+          <td>${c.id}</td>
+          <td>${escapeHtml(c.name)}</td>
+          <td>${escapeHtml(c.email)}</td>
+          <td>${escapeHtml(c.empresa || '')}</td>
+          <td>${escapeHtml(c.telefono || '')}</td>
+          <td>${escapeHtml(c.servicio || '')}</td>
+          <td>${escapeHtml(c.message || '')}</td>
+          <td>${new Date(c.created_at).toLocaleString()}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('list').innerHTML = `
+        <table>
+          <thead><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Empresa</th><th>Tel</th><th>Servicio</th><th>Mensaje</th><th>Fecha</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function toCSV(items) {
+      const header = ['id', 'name', 'email', 'empresa', 'telefono', 'servicio', 'message', 'created_at'];
+      const lines = [header.join(',')];
+      for (const c of items) {
+        const row = header.map(k => '"' + ((c[k] || '').toString().replace(/"/g, '""')) + '"');
+        lines.push(row.join(','));
+      }
+      return lines.join('\n');
+    }
+    
+    async function loadContacts() {
+        try {
+            const items = await fetchContacts();
+            renderTable(items);
+        } catch (e) {
+            alert(e.message || 'Error');
+        }
+    }
+
+    document.getElementById('refresh').addEventListener('click', loadContacts);
+
+    document.getElementById('export').addEventListener('click', async () => {
+      try {
+        const items = await fetchContacts();
+        const csv = toCSV(items);
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'contacts.csv';
+        document.body.appendChild(a); a.click(); a.remove();
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        alert(e.message || 'Error');
+      }
+    });
+
+    // --- Initial Check ---
+    // Check if a token exists and switch to the appropriate view
+    if (sessionStorage.getItem(TOKEN_KEY)) {
+      showAdminView();
+    } else {
+      showLoginView();
+    }
+  </script>
+</body>
+</html>
