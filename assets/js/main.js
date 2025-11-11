@@ -90,6 +90,12 @@ window.addEventListener('scroll', () => {
     } else {
         nav.classList.remove('nav-hidden');
     }
+    // Borde animado según desplazamiento
+    if (currentScroll > 8) {
+        nav.classList.add('nav-scrolled');
+    } else {
+        nav.classList.remove('nav-scrolled');
+    }
     
     lastScroll = currentScroll;
 });

@@ -133,6 +133,25 @@ app.get('/api/contacts', authMiddleware, (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+const os = require('os');
+
+app.listen(PORT, '0.0.0.0', () => {
+  const nets = os.networkInterfaces();
+  const addresses = [];
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name] || []) {
+      if (net.family === 'IPv4' && !net.internal) {
+        addresses.push(net.address);
+      }
+    }
+  }
+  console.log(`Servidor escuchando en:`);
+  console.log(`  • Local:   http://localhost:${PORT}`);
+  if (addresses.length) {
+    for (const ip of addresses) {
+      console.log(`  • Red LAN: http://${ip}:${PORT}`);
+    }
+  } else {
+    console.log('  • Red LAN: No se detectó IP local.');
+  }
 });

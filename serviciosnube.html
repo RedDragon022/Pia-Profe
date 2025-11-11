@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos.css"> 
+    <meta name="theme-color" content="#312e81" id="meta-theme-color">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Servicio: Cloud Computing</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/faq-handler.js" defer></script>
     <script src="assets/js/form-handler.js" defer></script>
+        <script src="assets/js/theme-toggle.js" defer></script>
+        <script defer>
+            (function(){
+                const el = document.getElementById('meta-theme-color');
+                function applyThemeColor(){
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+                }
+                document.addEventListener('DOMContentLoaded', applyThemeColor);
+                const obs = new MutationObserver(applyThemeColor);
+                obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+            })();
+        </script>
 </head>
 <body>
 
@@ -17,7 +31,7 @@
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i> Regresar
         </a>
-        <h1>Cloud Computing</h1>
+    <h1 class="service-banner-title">Cloud Computing</h1>
     </header>
 
     <main class="service-layout">

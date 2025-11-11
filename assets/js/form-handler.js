@@ -7,6 +7,10 @@
 (function() {
     'use strict';
 
+    // Permite configurar un backend externo cuando se despliega en hosting estático (GitHub Pages)
+    // Definir window.INVOMEX_API_BASE = 'https://tu-backend.example.com' para usarlo.
+    const API_BASE = (typeof window !== 'undefined' && window.INVOMEX_API_BASE) ? window.INVOMEX_API_BASE : '';
+
     /**
      * Envía el formulario al backend y gestiona la UI
      * @param {Event} event - Evento de submit del formulario
@@ -48,7 +52,7 @@
         };
 
         try {
-            const resp = await fetch('/api/contacts', {
+            const resp = await fetch(`${API_BASE}/api/contacts`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)

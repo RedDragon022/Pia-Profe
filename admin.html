@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Admin - Contactos</title>
   <link rel="stylesheet" href="Estilos.css">
+  <meta name="theme-color" content="#312e81" id="meta-theme-color">
+  <script src="assets/js/theme-toggle.js" defer></script>
+  <script defer>
+    (function(){
+      const el = document.getElementById('meta-theme-color');
+      function applyThemeColor(){
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+      }
+      document.addEventListener('DOMContentLoaded', applyThemeColor);
+      const obs = new MutationObserver(applyThemeColor);
+      obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    })();
+  </script>
   
 </head>
 <body>
@@ -53,14 +67,16 @@
 
     // --- Authentication Logic ---
 
-    loginForm.addEventListener('submit', async (e) => {
+  const API_BASE = window.INVOMEX_API_BASE || '';
+
+  loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorMessage.textContent = '';
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
       try {
-        const res = await fetch('/api/login', {
+  const res = await fetch(`${API_BASE}/api/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })
@@ -99,7 +115,7 @@
 
     async function fetchContacts() {
       const token = sessionStorage.getItem(TOKEN_KEY);
-      const res = await fetch('/api/contacts', {
+      const res = await fetch(`${API_BASE}/api/contacts`, {
         headers: { 'Authorization': token }
       });
 

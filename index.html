@@ -16,10 +16,10 @@
     <meta property="og:url" content="https://www.invomex.com">
     
     <!-- Favicon -->
-    <link rel="icon" href="/assets/favicon/favicon.svg" type="image/svg+xml">
-    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
     <meta name="msapplication-TileColor" content="#19385d">
-    <meta name="theme-color" content="#19385d">
+    <meta name="theme-color" content="#1e1b4b" id="meta-theme-color">
     
     <!-- Preload de fuentes críticas -->
     <!-- Fonts: preconnect + non-blocking load to reduce render-blocking and CLS -->
@@ -64,7 +64,7 @@
                 <div class="optimized-image-container">
                     <picture>
                         <source data-srcset="impacto-global.webp" type="image/webp">
-                        <img data-src="impacto-global.jpg" alt="Impacto global INVOMEX" class="feature-image lazy-image">
+                        <img src="impacto-global.jpg" data-src="impacto-global.jpg" alt="Impacto global INVOMEX" class="feature-image lazy-image" width="640" height="360">
                     </picture>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                         <div class="optimized-image-container">
                             <picture>
                                 <source data-srcset="impacto-global.webp" type="image/webp">
-                                            <img data-src="impacto-global.jpg" alt="Ilustración del Impacto Global de INVOMEX" class="feature-image lazy-image">
+                                            <img src="impacto-global.jpg" data-src="impacto-global.jpg" alt="Ilustración del Impacto Global de INVOMEX" class="feature-image lazy-image" width="640" height="360">
                             </picture>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
             </section>
 
             <section id="Contacto">
-                <div class="card pre-animation">
+                <div class="card pre-animation contact-card">
                     <h2>Contacto</h2>
                     <dl class="lista-contacto">
                         <dt><i class="fas fa-envelope"></i> Correo</dt>
@@ -272,6 +272,21 @@
     <script src="assets/js/image-optimizer.js" defer></script>
     <!-- Font loader: gestiona clases para evitar FOIT/FOUT -->
     <script src="assets/js/font-loader.js" defer></script>
+    <script src="assets/js/theme-toggle.js" defer></script>
+        <script defer>
+            (function(){
+                const el = document.getElementById('meta-theme-color');
+                function applyThemeColor(){
+                    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+                }
+                // aplicar al cargar
+                document.addEventListener('DOMContentLoaded', applyThemeColor);
+                // observar cambios de atributo data-theme
+                const obs = new MutationObserver(applyThemeColor);
+                obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+            })();
+        </script>
     
     <!-- Schema.org markup para SEO -->
     <script type="application/ld+json">

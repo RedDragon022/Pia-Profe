@@ -42,6 +42,9 @@
             if (img.dataset.src) {
                 img.src = img.dataset.src;
                 img.removeAttribute('data-src');
+                // Asegurar visibilidad si otro loader no interviene
+                img.classList.remove('lazy-image');
+                img.classList.add('lazy-loaded');
             }
         });
 
