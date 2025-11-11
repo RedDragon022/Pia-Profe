@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Centro de Recursos - INVOMEX</title>
+  <link rel="stylesheet" href="Estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta name="theme-color" content="#312e81" id="meta-theme-color" />
+  <script src="assets/js/theme-toggle.js" defer></script>
+  <script defer>
+    (function(){
+      const el = document.getElementById('meta-theme-color');
+      function applyThemeColor(){
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+      }
+      document.addEventListener('DOMContentLoaded', applyThemeColor);
+      const obs = new MutationObserver(applyThemeColor);
+      obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    })();
+  </script>
+</head>
+<body>
+  <header class="service-hero">
+    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Regresar</a>
+    <h2>Centro de Recursos</h2>
+  </header>
+
+  <main class="resources-section" style="margin-top: 2rem;">
+    <p class="resources-intro">Artículos prácticos, guías y checklists para ayudarte a decidir con confianza.</p>
+    <div class="resources-grid">
+      <article class="resource-card">
+        <span class="badge">Guía</span>
+        <h3><a href="articulos/5-senales-erp.html">5 señales de que tu empresa necesita un ERP a medida</a></h3>
+        <p>Cómo saber cuándo un ERP personalizado se vuelve clave para operar mejor y crecer.</p>
+        <a class="resource-cta" href="articulos/5-senales-erp.html"><i class="fas fa-arrow-right"></i> Leer artículo</a>
+      </article>
+      <article class="resource-card" id="ciberseguridad">
+        <span class="badge">Estrategia</span>
+        <h3><a href="articulos/seguridad-por-diseno-pymes.html">Seguridad por diseño: fundamentos para PYMEs</a></h3>
+        <p>Principios esenciales para reducir riesgos desde la arquitectura y procesos.</p>
+        <a class="resource-cta" href="articulos/seguridad-por-diseno-pymes.html"><i class="fas fa-arrow-right"></i> Leer artículo</a>
+      </article>
+      <article class="resource-card" id="automatizacion">
+        <span class="badge">Checklist</span>
+        <h3><a href="articulos/checklist-automatizacion-10-procesos.html">Checklist de automatización: 10 procesos que debes evaluar</a></h3>
+        <p>Una lista breve para identificar oportunidades de automatización con ROI alto.</p>
+        <a class="resource-cta" href="articulos/checklist-automatizacion-10-procesos.html"><i class="fas fa-arrow-right"></i> Ver checklist</a>
+      </article>
+    </div>
+  </main>
+
+  <footer style="margin-top: 3rem;">
+    <div class="footer-content">
+      <p>© 2025 INVOMEX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

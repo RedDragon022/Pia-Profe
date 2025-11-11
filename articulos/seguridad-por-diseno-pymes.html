@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seguridad por diseño: fundamentos para PYMEs</title>
+  <link rel="stylesheet" href="../Estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta name="theme-color" content="#312e81" id="meta-theme-color" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+  <script defer>
+    (function(){
+      const el = document.getElementById('meta-theme-color');
+      function applyThemeColor(){
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+      }
+      document.addEventListener('DOMContentLoaded', applyThemeColor);
+      const obs = new MutationObserver(applyThemeColor);
+      obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    })();
+  </script>
+</head>
+<body>
+  <header class="service-hero">
+    <a href="../recursos.html#ciberseguridad" class="back-button"><i class="fas fa-arrow-left"></i> Regresar</a>
+    <h2>Seguridad por diseño: fundamentos para PYMEs</h2>
+  </header>
+
+  <main class="service-detail-container" style="max-width: 900px;">
+    <article>
+      <p style="font-size:1rem; line-height:1.4;">La seguridad por diseño consiste en incorporar controles desde el inicio: arquitectura, datos y procesos. Estas prácticas reducen riesgos con inversiones graduales.</p>
+
+      <section>
+        <h3 style="font-size:1.05rem;">Principios clave</h3>
+        <ul style="padding-left:1.25rem; line-height:1.4;">
+          <li><strong>Mínimo privilegio:</strong> Accesos únicamente a lo necesario; revisiones periódicas.</li>
+          <li><strong>Segmentación:</strong> Separar redes/sistemas críticos para contener incidentes.</li>
+          <li><strong>Autenticación fuerte:</strong> MFA, rotación de claves y bloqueo por intentos.</li>
+          <li><strong>Cifrado:</strong> En tránsito (TLS) y en reposo (bases de datos/respaldos).</li>
+          <li><strong>Actualizaciones:</strong> Parcheo regular de sistemas, dependencias y firmware.</li>
+          <li><strong>Gestión de secretos:</strong> Almacenes seguros; jamás en código o correos.</li>
+          <li><strong>Registro y monitoreo:</strong> Alertas de eventos críticos y anomalías.</li>
+          <li><strong>Resiliencia:</strong> Backups probados, plan de continuidad y respuesta a incidentes.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 style="font-size:1.05rem;">Primeros pasos prácticos (2–3 semanas)</h3>
+        <ol style="padding-left:1.25rem; line-height:1.4;">
+          <li>Habilita MFA en correo, ERP/CRM y paneles administrativos.</li>
+          <li>Centraliza contraseñas en un gestor y define políticas de longitud/rotación.</li>
+          <li>Clasifica datos sensibles (clientes, finanzas, IP) y restringe accesos.</li>
+          <li>Activa respaldos automáticos con retención y prueba de restauración.</li>
+          <li>Documenta un flujo de respuesta a incidentes y responsables.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3 style="font-size:1.05rem;">Checklist de madurez</h3>
+        <ul style="padding-left:1.25rem; line-height:1.4;">
+          <li>Inventario de activos actualizado y responsables.</li>
+          <li>MFA aplicado en cuentas críticas y VPN.</li>
+          <li>Backups verificados y en almacenamiento independiente.</li>
+          <li>Registros centralizados con alertas de fallos/inicios sospechosos.</li>
+          <li>Capacitación básica de phishing para todo el personal.</li>
+        </ul>
+      </section>
+
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a href="../index.html#Contacto" class="btn btn-primary"><i class="fas fa-shield-alt"></i> Solicitar evaluación de seguridad</a>
+      </div>
+    </article>
+  </main>
+
+  <footer style="margin-top: 3rem;">
+    <div class="footer-content">
+      <p>© 2025 INVOMEX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

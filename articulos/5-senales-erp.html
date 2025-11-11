@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5 señales de que tu empresa necesita un ERP a medida</title>
+  <link rel="stylesheet" href="../Estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta name="theme-color" content="#312e81" id="meta-theme-color" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+  <script defer>
+    (function(){
+      const el = document.getElementById('meta-theme-color');
+      function applyThemeColor(){
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+      }
+      document.addEventListener('DOMContentLoaded', applyThemeColor);
+      const obs = new MutationObserver(applyThemeColor);
+      obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    })();
+  </script>
+</head>
+<body>
+  <header class="service-hero">
+    <a href="../recursos.html" class="back-button"><i class="fas fa-arrow-left"></i> Regresar</a>
+    <h2>5 señales de que tu empresa necesita un ERP a medida</h2>
+  </header>
+
+  <main class="service-detail-container" style="max-width: 900px;">
+    <article>
+      <p style="font-size:1rem; line-height:1.4;">Un ERP genérico puede quedarse corto cuando tu operación empieza a presentar fricciones, duplicidad de esfuerzos y falta de visibilidad confiable. Estas señales ayudan a justificar una plataforma personalizada.</p>
+      <ol style="padding-left:1.25rem; line-height:1.4;">
+        <li><strong>Datos dispersos y no sincronizados:</strong> Ventas, inventario y finanzas manejan versiones distintas de la realidad.</li>
+        <li><strong>Procesos críticos hechos en hojas de cálculo:</strong> Escalan mal, son frágiles y dependen de una persona clave.</li>
+        <li><strong>Integraciones manuales repetitivas:</strong> Operadores exportan e importan archivos para conectar sistemas.</li>
+        <li><strong>Reportes tardíos o inconsistentes:</strong> Decisiones basadas en datos atrasados generan pérdida de oportunidades.</li>
+        <li><strong>Dificultad para crecer o diversificar:</strong> Cada nueva línea de producto exige parches improvisados.</li>
+      </ol>
+      <p style="font-size:1rem; line-height:1.4;">Si al menos dos de estos puntos se repiten mes a mes, un ERP a medida permite diseñar flujos adaptados a tu realidad, reducir tiempos improductivos y escalar con menos fricción.</p>
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a href="../index.html#Contacto" class="btn btn-primary"><i class="fas fa-envelope"></i> Solicitar Evaluación Inicial</a>
+      </div>
+    </article>
+  </main>
+
+  <footer style="margin-top: 3rem;">
+    <div class="footer-content">
+      <p>© 2025 INVOMEX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

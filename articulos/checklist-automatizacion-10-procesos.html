@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checklist de automatización: 10 procesos que debes evaluar</title>
+  <link rel="stylesheet" href="../Estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta name="theme-color" content="#312e81" id="meta-theme-color" />
+  <script src="../assets/js/theme-toggle.js" defer></script>
+  <script defer>
+    (function(){
+      const el = document.getElementById('meta-theme-color');
+      function applyThemeColor(){
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        el && el.setAttribute('content', isDark ? '#1e1b4b' : '#312e81');
+      }
+      document.addEventListener('DOMContentLoaded', applyThemeColor);
+      const obs = new MutationObserver(applyThemeColor);
+      obs.observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+    })();
+  </script>
+</head>
+<body>
+  <header class="service-hero">
+    <a href="../recursos.html#automatizacion" class="back-button"><i class="fas fa-arrow-left"></i> Regresar</a>
+    <h2>Checklist de automatización: 10 procesos que debes evaluar</h2>
+  </header>
+
+  <main class="service-detail-container" style="max-width: 900px;">
+    <article>
+      <p style="font-size:1rem; line-height:1.4;">Usa esta lista rápida para identificar procesos candidatos a automatización con alto retorno. Marca los que apliquen y prioriza según impacto vs. complejidad.</p>
+      <ol style="padding-left:1.25rem; line-height:1.4;">
+        <li><strong>Captura de datos repetitiva</strong> (formularios, pedidos, alta de clientes/proveedores).</li>
+        <li><strong>Conciliaciones y cruces de información</strong> (inventario vs. ventas vs. compras).</li>
+        <li><strong>Notificaciones y recordatorios</strong> (cobranza, seguimiento de tickets, tareas).</li>
+        <li><strong>Flujos de aprobación</strong> (compras, descuentos, cambios de ingeniería).</li>
+        <li><strong>Reportes operativos</strong> (diarios/semanales con datos ya disponibles).</li>
+        <li><strong>Integraciones manuales</strong> (exportar/importar archivos entre sistemas).</li>
+        <li><strong>Control de calidad</strong> (captura de mediciones, fotografías, checklist de liberación).</li>
+        <li><strong>Onboarding de personal</strong> (provisión de accesos, capacitación inicial, checklists).</li>
+        <li><strong>Gestión de inventarios</strong> (reorden automático, alertas de mínimos, trazabilidad).</li>
+        <li><strong>Atención al cliente</strong> (respuestas estándar, clasificación de casos, escalamiento).</li>
+      </ol>
+
+      <section>
+        <h3 style="font-size:1.05rem;">Cómo priorizar</h3>
+        <ul style="padding-left:1.25rem; line-height:1.4;">
+          <li><strong>Impacto:</strong> Ahorro de tiempo, reducción de errores, mejora de visibilidad.</li>
+          <li><strong>Esfuerzo:</strong> Disponibilidad de datos, dependencia de otros sistemas, complejidad.</li>
+          <li><strong>Riesgo:</strong> Cambios organizacionales, cumplimiento, seguridad.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 style="font-size:1.05rem;">Entrega rápida (2–4 semanas)</h3>
+        <p style="line-height:1.4;">Empieza con un piloto: 1 proceso, métricas claras y una demo funcional. Repite, mide y escala.</p>
+      </section>
+
+      <div style="margin-top:1.5rem; text-align:center;">
+        <a href="../index.html#Contacto" class="btn btn-primary"><i class="fas fa-envelope"></i> Solicitar diagnóstico de automatización</a>
+      </div>
+    </article>
+  </main>
+
+  <footer style="margin-top: 3rem;">
+    <div class="footer-content">
+      <p>© 2025 INVOMEX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
