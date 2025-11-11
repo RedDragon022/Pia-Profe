@@ -23,7 +23,7 @@
     <main class="service-layout">
         <div class="service-info">
             <h2>¿Qué Ofrece el servicio de Cloud Computing?</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <div class="service-intro">
                 <p>
                     Nuestro servicio de Cloud Computing es su socio estratégico para la transformación digital.
                     Ofrecemos una consultoría completa para diseñar, migrar y gestionar su infraestructura tecnológica en 
@@ -36,18 +36,30 @@
 
             <h3>¿Que resultados concretos puedo esperar al invertir en Cloud Computing?</h3>
             
-            <ul style="list-style-type: disc; max-width: 800px; margin: 0 auto; text-align: left;" class="reveal">
+            <ul class="service-list with-icons reveal">
                 <li>
-                    <strong>Escalabilidad ilimitada y baja demanda:</strong> Su infraestructura se ajusta automáticamente al volumen de trabajo. Puede crecer o reducir recursos en minutos, no en meses, asegurando que nunca pague por capacidad que no utiliza.
+                    <span class="service-icon"><i class="fas fa-expand"></i></span>
+                    <div>
+                        <strong>Escalabilidad ilimitada y baja demanda:</strong> Su infraestructura se ajusta automáticamente al volumen de trabajo. Puede crecer o reducir recursos en minutos, no en meses, asegurando que nunca pague por capacidad que no utiliza.
+                    </div>
                 </li>
                 <li>
-                    <strong>Reduccion de gasto de capital:</strong> Al eliminar la necesidad de comprar, mantener y actualizar servidores físicos costosos, su modelo de inversión pasa a ser operativo.
+                    <span class="service-icon"><i class="fas fa-money-bill-trend-up"></i></span>
+                    <div>
+                        <strong>Reduccion de gasto de capital:</strong> Al eliminar la necesidad de comprar, mantener y actualizar servidores físicos costosos, su modelo de inversión pasa a ser operativo.
+                    </div>
                 </li>
                 <li>
-                    <strong>Alta disponibilidad y resilencia:</strong> Su información y aplicaciones están protegidas en múltiples centros de datos, lo que garantiza que su negocio permanezca en línea incluso ante desastres o fallas de hardware.
+                    <span class="service-icon"><i class="fas fa-cloud-sun"></i></span>
+                    <div>
+                        <strong>Alta disponibilidad y resilencia:</strong> Su información y aplicaciones están protegidas en múltiples centros de datos, lo que garantiza que su negocio permanezca en línea incluso ante desastres o fallas de hardware.
+                    </div>
                 </li>
                 <li>
-                    <strong>Innovacion acelerada:</strong> Acceso instantáneo a las últimas tecnologías sin necesidad de grandes inversiones iniciales.
+                    <span class="service-icon"><i class="fas fa-bolt"></i></span>
+                    <div>
+                        <strong>Innovacion acelerada:</strong> Acceso instantáneo a las últimas tecnologías sin necesidad de grandes inversiones iniciales.
+                    </div>
                 </li>
             </ul>
         </div>
@@ -58,7 +70,7 @@
                 <h2>Solicitar Información del Servicio</h2>
                 <p>Complete el siguiente formulario y uno de nuestros especialistas en Cloud Computing se pondrá en contacto con usted en las próximas 24 horas.</p>
 
-                <form id="contact-form" action="#" novalidate onsubmit="return mostrarConfirmacionInterna(event)">
+                <form id="contact-form" action="#" novalidate>
                     
                     <div class="form-group">
                         <label for="nombre">Nombre Completo:</label>
@@ -90,19 +102,17 @@
                         <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
                     </div>
 
-                    <button type="submit">Solicitar Contacto</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Solicitar Contacto</button>
                 </form>
             </div>
             
-            <div id="mensaje-exito" style="display: none; text-align: center; padding: 50px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #f4fff4;">
-                <h2 style="color: #4CAF50;">¡Solicitud Enviada con Éxito!</h2>
-                <p style="font-size: 1.1em;">
+            <div id="mensaje-exito" class="success-message">
+                <h2>¡Solicitud Enviada con Éxito!</h2>
+                <p>
                     Gracias por su interés en Cloud Computing. Su solicitud ha sido recibida correctamente. 
                     Un especialista se pondrá en contacto con usted en las próximas 24 horas.
                 </p>
-                
-                <button style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                        onclick="window.location.href = 'index.html';">
+                <button class="btn-success" onclick="window.location.href = 'index.html';">
                     Volver a Servicios Principales
                 </button>
             </div>

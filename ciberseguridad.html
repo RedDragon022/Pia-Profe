@@ -23,7 +23,7 @@
     <main class="service-layout">
         <div class="service-info">
             <h2>¿Qué Ofrece el servicio de Ciberseguridad?</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <div class="service-intro">
                 <p> 
                     Ofrecemos un escudo de protección integral, proactivo y reactivo, diseñado para salvaguardar el activo más crítico de su empresa. 
                     Nuestro enfoque va más allá del antivirus; se centra en crear una arquitectura de defensa robusta. Esto incluye la realización de 
@@ -35,18 +35,30 @@
 
              <h3>¿Que resultados concretos puedo esperar al invertir en Ciberseguridad?</h3>
             
-            <ul style="list-style-type: disc; max-width: 800px; margin: 0 auto; text-align: left;">
+            <ul class="service-list with-icons">
                 <li>
-                    <strong>Minimizacion del riesgo financiero:</strong> Se evitan las pérdidas catastróficas asociadas a ataques.
+                    <span class="service-icon"><i class="fas fa-shield-halved"></i></span>
+                    <div>
+                        <strong>Minimizacion del riesgo financiero:</strong> Se evitan las pérdidas catastróficas asociadas a ataques.
+                    </div>
                 </li>
                 <li>
-                    <strong>Cumplimiento normativo garantizado:</strong> Le ayudamos a cumplir con regulaciones locales e internacionales de protección de datos, evitando sanciones legales y manteniendo su reputación intacta.
+                    <span class="service-icon"><i class="fas fa-file-shield"></i></span>
+                    <div>
+                        <strong>Cumplimiento normativo garantizado:</strong> Le ayudamos a cumplir con regulaciones locales e internacionales de protección de datos, evitando sanciones legales y manteniendo su reputación intacta.
+                    </div>
                 </li>
                 <li>
-                    <strong>Continuidad del negocio asegurado:</strong> Al prevenir ataques o limitar su impacto, garantizamos que sus operaciones críticas permanezcan activas, reduciendo drásticamente el tiempo de inactividad. 
+                    <span class="service-icon"><i class="fas fa-business-time"></i></span>
+                    <div>
+                        <strong>Continuidad del negocio asegurado:</strong> Al prevenir ataques o limitar su impacto, garantizamos que sus operaciones críticas permanezcan activas, reduciendo drásticamente el tiempo de inactividad. 
+                    </div>
                 </li>
                 <li>
-                    <strong>Confianza reforzada:</strong> Al demostrar a sus clientes que su información está segura, usted fortalece la reputación y credibilidad de su marca en el mercado.
+                    <span class="service-icon"><i class="fas fa-handshake"></i></span>
+                    <div>
+                        <strong>Confianza reforzada:</strong> Al demostrar a sus clientes que su información está segura, usted fortalece la reputación y credibilidad de su marca en el mercado.
+                    </div>
                 </li>
             </ul>
 
@@ -58,7 +70,7 @@
                 <h2>Solicitar Información del Servicio</h2>
                 <p>Complete el siguiente formulario y uno de nuestros especialistas en ciberseguridad se pondrá en contacto con usted en las próximas 24 horas.</p>
 
-                <form id="contact-form" action="#" novalidate onsubmit="return mostrarConfirmacionInterna(event)">
+                <form id="contact-form" action="#" novalidate>
                     
                     <div class="form-group">
                         <label for="nombre">Nombre Completo:</label>
@@ -90,19 +102,18 @@
                         <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
                     </div>
 
-                    <button type="submit">Solicitar Contacto</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Solicitar Contacto</button>
                 </form>
             </div>
             
-            <div id="mensaje-exito" style="display: none; text-align: center; padding: 50px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #f4fff4;">
-                <h2 style="color: #4CAF50;">¡Solicitud Enviada con Éxito!</h2>
-                <p style="font-size: 1.1em;">
+            <div id="mensaje-exito" class="success-message">
+                <h2>¡Solicitud Enviada con Éxito!</h2>
+                <p>
                     Gracias por su interés en Ciberseguridad.
                     Su solicitud ha sido recibida correctamente. Un especialista se pondrá en contacto con usted en 
                     las próximas 24 horas.
                 </p>
-                <button style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                        onclick="window.location.href = 'index.html';">
+                <button class="btn-success" onclick="window.location.href = 'index.html';">
                     Volver a Servicios Principales
                 </button>
             </div>

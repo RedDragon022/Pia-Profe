@@ -8,11 +8,11 @@
     'use strict';
 
     /**
-     * Maneja el envío del formulario de contacto
+     * Envía el formulario al backend y gestiona la UI
      * @param {Event} event - Evento de submit del formulario
      * @param {string} serviceName - Nombre del servicio para personalizar el mensaje
      */
-    function handleFormSubmit(event, serviceName) {
+    async function handleFormSubmit(event, serviceName) {
         event.preventDefault();
 
         const formContainer = document.getElementById('formulario-contacto');
@@ -29,41 +29,84 @@
             return false;
         }
 
-        // Ocultar formulario y mostrar mensaje de éxito
-        if (formContainer) formContainer.style.display = 'none';
-        if (successMessage) successMessage.style.display = 'block';
+        // Construir payload de acuerdo al backend
+        const getVal = (selectors) => {
+            for (const sel of selectors) {
+                const el = form.querySelector(sel);
+                if (el && typeof el.value === 'string') return el.value;
+            }
+            return '';
+        };
 
-        // Mostrar alerta de confirmación con SweetAlert2
-        if (typeof Swal !== 'undefined') {
-            Swal.fire({
-                icon: "success",
-                title: "¡Solicitud enviada con éxito!",
-                text: `Gracias por su interés en ${serviceName}. Un especialista se pondrá en contacto con usted en las próximas 24 horas.`,
-                confirmButtonText: "Aceptar",
-                confirmButtonColor: "#3085d6"
-            }).then(() => {
-                window.location.href = "index.html";
+        const data = {
+            name: getVal(['[name="name"]', '[name="nombre"]', '#nombre']).trim(),
+            email: getVal(['[name="email"]', '#email']).trim(),
+            empresa: getVal(['[name="empresa"]', '#empresa']).trim(),
+            telefono: getVal(['[name="telefono"]', '#telefono']).trim(),
+            servicio: (getVal(['[name="servicio"]', '[name="servicio-interes"]', '#servicio-interes']).trim() || serviceName || '').trim(),
+            message: getVal(['[name="message"]', '[name="mensaje"]', '#mensaje']).trim(),
+        };
+
+        try {
+            const resp = await fetch('/api/contacts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-        } else {
-            // Fallback si SweetAlert2 no está cargado
-            alert(`¡Solicitud enviada con éxito! Gracias por su interés en ${serviceName}.`);
-            window.location.href = "index.html";
-        }
 
-        return false;
+            const body = await resp.json().catch(() => ({}));
+
+            if (!resp.ok) {
+                const msg = body?.errors?.join(', ') || body?.error || 'No fue posible enviar la solicitud.';
+                if (typeof Swal !== 'undefined') {
+                    await Swal.fire({ icon: 'error', title: 'Error', text: msg });
+                } else {
+                    alert(msg);
+                }
+                return false;
+            }
+
+            // Ocultar formulario y mostrar mensaje de éxito
+            if (formContainer) formContainer.style.display = 'none';
+            if (successMessage) successMessage.style.display = 'block';
+
+            // Confirmación bonita
+            if (typeof Swal !== 'undefined') {
+                await Swal.fire({
+                    icon: 'success',
+                    title: '¡Solicitud enviada con éxito!',
+                    text: `Gracias por su interés en ${data.servicio || serviceName || 'nuestros servicios'}. Un especialista se pondrá en contacto con usted en las próximas 24 horas.`,
+                    confirmButtonText: 'Aceptar',
+                    confirmButtonColor: '#3085d6'
+                });
+            }
+
+            // Redirigir al inicio
+            window.location.href = 'index.html';
+            return false;
+        } catch (err) {
+            console.error('Error al enviar el formulario:', err);
+            if (typeof Swal !== 'undefined') {
+                await Swal.fire({ icon: 'error', title: 'Error de conexión', text: 'No se pudo conectar con el servidor.' });
+            } else {
+                alert('No se pudo conectar con el servidor.');
+            }
+            return false;
+        }
     }
 
     /**
      * Inicializa el manejador de formularios
-     * Detecta automáticamente el nombre del servicio desde el campo readonly
+     * Detecta automáticamente el nombre del servicio desde el campo readonly o título
      */
     function initFormHandler() {
         const form = document.getElementById('contact-form');
         if (!form) return;
 
-        // Obtener el nombre del servicio del campo readonly
+        // Obtener el nombre del servicio del campo readonly o del h1
         const serviceField = document.getElementById('servicio-interes');
-        const serviceName = serviceField ? serviceField.value : 'nuestros servicios';
+        const h1Title = document.querySelector('header h1')?.textContent?.trim();
+        const serviceName = serviceField?.value || h1Title || 'nuestros servicios';
 
         // Asignar el manejador al formulario
         form.addEventListener('submit', function(event) {
@@ -84,7 +127,8 @@
     // Exponer función para uso inline si es necesario (legacy)
     window.mostrarConfirmacionInterna = function(event) {
         const serviceField = document.getElementById('servicio-interes');
-        const serviceName = serviceField ? serviceField.value : 'nuestros servicios';
+        const h1Title = document.querySelector('header h1')?.textContent?.trim();
+        const serviceName = serviceField?.value || h1Title || 'nuestros servicios';
         return handleFormSubmit(event, serviceName);
     };
 })();

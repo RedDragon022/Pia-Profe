@@ -3,134 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Estilos.css"> 
+    <meta name="description" content="Servicios profesionales de automatización industrial y de procesos. Mejoramos eficiencia y reducimos costos con tecnología de vanguardia.">
+    <title>Automatización Industrial | INVOMEX</title>
+    <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Servicio: Automatización</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/faq-handler.js" defer></script>
     <script src="assets/js/form-handler.js" defer></script>
 </head>
 <body>
-
     <header>
-        <a href="index.html" class="back-button">
+        <a href="index.html" class="back-button" aria-label="Volver a página principal">
             <i class="fas fa-arrow-left"></i> Regresar
         </a>
         <h1>Automatización</h1>
     </header>
 
     <main class="service-layout">
-
         <div class="service-info">
-            
-            <h3>¿Qué Ofrece el servicio de Automatización?</h3>
+            <h2>¿Qué Ofrece el servicio de Automatización?</h2>
             <div class="service-intro">
-                <p>
-                    La Automatización es el pilar fundamental para la eficiencia industrial y empresarial moderna. 
-                    Nuestro servicio se enfoca en el análisis exhaustivo, diseño, implementación y puesta en marcha de soluciones 
-                    de control de vanguardia. Esto incluye la integración de Sistemas de Control para la infraestructura
-                    industrial, y la Robótica de Procesos para optimizar tareas administrativas y de back-office. 
-                    Transformamos sus operaciones manuales en procesos inteligentes, continuos y autónomos, lo que asegura una 
-                    operación fluida y la máxima utilización de sus recursos.
-                </p>
+                <p>La Automatización es el pilar fundamental para la eficiencia industrial y empresarial moderna. 
+                Nuestro servicio se enfoca en el análisis exhaustivo, diseño, implementación y puesta en marcha de soluciones 
+                de control de vanguardia. Esto incluye la integración de Sistemas de Control para la infraestructura
+                industrial, y la Robótica de Procesos para optimizar tareas administrativas y de back-office. 
+                Transformamos sus operaciones manuales en procesos inteligentes, continuos y autónomos, lo que asegura una 
+                operación fluida y la máxima utilización de sus recursos.</p>
             </div>
-            
+
             <h3>¿Qué resultados concretos puedo esperar?</h3>
-            
-            <ul class="service-list with-icons reveal">
+            <ul class="service-list reveal">
                 <li>
-                    <span class="service-icon"><i class="fas fa-piggy-bank"></i></span>
-                    <div>
-                        <strong>Reducción Drástica de Costos:</strong> Se minimizan los errores humanos, el desperdicio de materiales y los tiempos muertos.
-                    </div>
+                    <strong>Reducción Drástica de Costos:</strong>
+                    Se minimizan los errores humanos, el desperdicio de materiales y los tiempos muertos.
                 </li>
                 <li>
-                    <span class="service-icon"><i class="fas fa-chart-line"></i></span>
-                    <div>
-                        <strong>Aumento de la Productividad:</strong> Los sistemas automatizados operan continuamente sin fatiga, garantizando un flujo de trabajo constante.
-                    </div>
+                    <strong>Aumento de la Productividad:</strong>
+                    Los sistemas automatizados operan continuamente sin fatiga, garantizando un flujo de trabajo constante.
                 </li>
                 <li>
-                    <span class="service-icon"><i class="fas fa-check-double"></i></span>
-                    <div>
-                        <strong>Mejora Sustancial de la Calidad:</strong> Al eliminar la variabilidad humana, cada proceso se ejecuta con una precisión y consistencia perfectas.
-                    </div>
+                    <strong>Mejora Sustancial de la Calidad:</strong>
+                    Al eliminar la variabilidad humana, cada proceso se ejecuta con una precisión y consistencia perfectas.
                 </li>
                 <li>
-                    <span class="service-icon"><i class="fas fa-user-shield"></i></span>
-                    <div>
-                        <strong>Ambiente de Trabajo más Seguro:</strong> Las tareas peligrosas o físicamente exigentes son asignadas a máquinas, protegiendo a su personal.
-                    </div>
+                    <strong>Ambiente de Trabajo más Seguro:</strong>
+                    Las tareas peligrosas o físicamente exigentes son asignadas a máquinas, protegiendo a su personal.
                 </li>
             </ul>
         </div>
 
         <div class="service-form-wrapper">
             <section class="service-request-form">
-                
                 <div id="formulario-contacto">
                     <h3>Solicitar Información del Servicio</h3>
                     <p>Complete el siguiente formulario y uno de nuestros especialistas se pondrá en contacto con usted.</p>
-
-                    <form id="contact-form" action="#" novalidate>
+                    <form id="contact-form" novalidate>
                         <div class="form-group">
-                            <label for="nombre">Nombre Completo:</label>
-                            <input type="text" id="nombre" name="nombre" required>
+                            <label for="nombre">Nombre Completo <span class="required">*</span></label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Juan Pérez">
                         </div>
-                        
                         <div class="form-group">
-                            <label for="empresa">Empresa (Opcional):</label>
-                            <input type="text" id="empresa" name="empresa">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nombre de la empresa">
                         </div>
-
                         <div class="form-group">
-                            <label for="email">Correo Electrónico:</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">Correo Electrónico <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="correo@empresa.com">
                         </div>
-
                         <div class="form-group">
-                            <label for="telefono">Teléfono:</label>
-                            <input type="tel" id="telefono" name="telefono" required>
+                            <label for="telefono">Teléfono <span class="required">*</span></label>
+                            <input type="tel" id="telefono" name="telefono" required placeholder="+52 81 1234 5678">
                         </div>
-
                         <div class="form-group">
-                            <label for="servicio-interes">Servicio de Interés:</label>
+                            <label for="servicio-interes">Servicio de Interés</label>
                             <input type="text" id="servicio-interes" name="servicio-interes" value="Automatización" readonly>
                         </div>
-
                         <div class="form-group">
-                            <label for="mensaje">Describa brevemente su requerimiento:</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                            <label for="mensaje">Describa brevemente su requerimiento <span class="required">*</span></label>
+                            <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntenos sobre su proyecto..."></textarea>
                         </div>
-
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Solicitar Contacto</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Solicitar Contacto
+                        </button>
                     </form>
                 </div>
 
                 <div id="mensaje-exito" class="success-message">
-                    <h2>¡Solicitud Enviada con Éxito!</h2>
-                    <p>
-                        Gracias por su interés en Automatización. Su solicitud ha sido recibida correctamente. 
-                        Un especialista se pondrá en contacto con usted en las próximas 24 horas.
-                    </p>
-                    
+                    <h2><i class="fas fa-check-circle"></i> ¡Solicitud Enviada con Éxito!</h2>
+                    <p>Gracias por su interés en Automatización. Su solicitud ha sido recibida correctamente. 
+                    Un especialista se pondrá en contacto con usted en las próximas 24 horas.</p>
                     <button class="btn-success" onclick="window.location.href = 'index.html';">
-                        Volver a Servicios Principales
+                        <i class="fas fa-home"></i> Volver a Servicios Principales
                     </button>
                 </div>
             </section>
         </div>
-
     </main>
 
     <section class="casos-exito reveal">
         <h2>Casos de Éxito</h2>
-        <div class="casos-exito-grid reveal">
+        <div class="casos-exito-grid">
             <article class="caso-exito-card reveal">
                 <picture>
-                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/automotive-success-480.webp 480w, assets/images/casos-exito/automatizacion/automotive-success-768.webp 768w, assets/images/casos-exito/automatizacion/automotive-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/automotive-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
-                    <img src="assets/images/casos-exito/automatizacion/automotive-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/automotive-success-480.jpg 480w, assets/images/casos-exito/automatizacion/automotive-success-768.jpg 768w, assets/images/casos-exito/automatizacion/automotive-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/automotive-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito sector automotriz" class="caso-exito-imagen" loading="lazy" decoding="async">
+                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/automotive-success-480.webp 480w, assets/images/casos-exito/automatizacion/automotive-success-768.webp 768w, assets/images/casos-exito/automatizacion/automotive-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/automotive-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+                    <img src="assets/images/casos-exito/automatizacion/automotive-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/automotive-success-480.jpg 480w, assets/images/casos-exito/automatizacion/automotive-success-768.jpg 768w, assets/images/casos-exito/automatizacion/automotive-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/automotive-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" alt="Caso de éxito sector automotriz" class="caso-exito-imagen" loading="lazy" decoding="async">
                 </picture>
                 <div class="caso-exito-contenido">
                     <h3 class="caso-exito-titulo">Automotriz Líder Mundial</h3>
@@ -150,8 +127,8 @@
 
             <article class="caso-exito-card reveal">
                 <picture>
-                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/pharma-success-480.webp 480w, assets/images/casos-exito/automatizacion/pharma-success-768.webp 768w, assets/images/casos-exito/automatizacion/pharma-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/pharma-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
-                    <img src="assets/images/casos-exito/automatizacion/pharma-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/pharma-success-480.jpg 480w, assets/images/casos-exito/automatizacion/pharma-success-768.jpg 768w, assets/images/casos-exito/automatizacion/pharma-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/pharma-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito sector farmacéutico" class="caso-exito-imagen" loading="lazy" decoding="async">
+                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/pharma-success-480.webp 480w, assets/images/casos-exito/automatizacion/pharma-success-768.webp 768w, assets/images/casos-exito/automatizacion/pharma-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/pharma-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+                    <img src="assets/images/casos-exito/automatizacion/pharma-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/pharma-success-480.jpg 480w, assets/images/casos-exito/automatizacion/pharma-success-768.jpg 768w, assets/images/casos-exito/automatizacion/pharma-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/pharma-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" alt="Caso de éxito sector farmacéutico" class="caso-exito-imagen" loading="lazy" decoding="async">
                 </picture>
                 <div class="caso-exito-contenido">
                     <h3 class="caso-exito-titulo">Farmacéutica Internacional</h3>
@@ -171,8 +148,8 @@
 
             <article class="caso-exito-card reveal">
                 <picture>
-                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/logistics-success-480.webp 480w, assets/images/casos-exito/automatizacion/logistics-success-768.webp 768w, assets/images/casos-exito/automatizacion/logistics-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/logistics-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw">
-                    <img src="assets/images/casos-exito/automatizacion/logistics-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/logistics-success-480.jpg 480w, assets/images/casos-exito/automatizacion/logistics-success-768.jpg 768w, assets/images/casos-exito/automatizacion/logistics-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/logistics-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw" alt="Caso de éxito sector logístico" class="caso-exito-imagen" loading="lazy" decoding="async">
+                    <source type="image/webp" srcset="assets/images/casos-exito/automatizacion/logistics-success-480.webp 480w, assets/images/casos-exito/automatizacion/logistics-success-768.webp 768w, assets/images/casos-exito/automatizacion/logistics-success-1024.webp 1024w, assets/images/casos-exito/automatizacion/logistics-success-1600.webp 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw">
+                    <img src="assets/images/casos-exito/automatizacion/logistics-success-1024.jpg" srcset="assets/images/casos-exito/automatizacion/logistics-success-480.jpg 480w, assets/images/casos-exito/automatizacion/logistics-success-768.jpg 768w, assets/images/casos-exito/automatizacion/logistics-success-1024.jpg 1024w, assets/images/casos-exito/automatizacion/logistics-success-1600.jpg 1600w" sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" alt="Caso de éxito sector logístico" class="caso-exito-imagen" loading="lazy" decoding="async">
                 </picture>
                 <div class="caso-exito-contenido">
                     <h3 class="caso-exito-titulo">Líder en Logística</h3>
@@ -206,7 +183,6 @@
                     una evaluación inicial detallada para proporcionarle un cronograma preciso.
                 </div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-question">
                     ¿Qué nivel de capacitación requiere mi personal?
@@ -218,7 +194,6 @@
                     técnica más profunda puede extenderse hasta 3 semanas.
                 </div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-question">
                     ¿Cómo aseguran la continuidad operativa durante la implementación?
@@ -230,7 +205,6 @@
                     durante todo el proceso.
                 </div>
             </div>
-
             <div class="faq-item">
                 <button class="faq-question">
                     ¿Qué soporte post-implementación ofrecen?
@@ -246,8 +220,9 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 INVOMEX</p>
+        <div class="footer-content">
+            <p>&copy; 2025 INVOMEX. Todos los derechos reservados.</p>
+        </div>
     </footer>
-    
 </body>
 </html>

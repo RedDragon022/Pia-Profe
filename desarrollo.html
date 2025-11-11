@@ -10,6 +10,7 @@
     <script src="assets/js/animations.js" defer></script>
     <script src="assets/js/faq-handler.js" defer></script>
     <script src="assets/js/form-validation.js" defer></script>
+    <script src="assets/js/form-handler.js" defer></script>
 </head>
 <body>
 
@@ -23,7 +24,7 @@
     <main class="service-layout">
         <div class="service-info">
             <h2>¿Qué Ofrece el servicio de Desarrollo de software?</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <div class="service-intro">
                 <p>
                     Ofrecemos la creación de soluciones de software a la medida que están diseñadas para encajar perfectamente en los requerimientos únicos de su 
                     negocio, sin las limitaciones de los productos comerciales. Nos especializamos en la construcción de aplicaciones web, plataformas móviles y 
@@ -35,18 +36,30 @@
             
             <h3>¿Que resultados concretos puedo esperar al invertir en Desarrollo de software?</h3>
             
-            <ul style="list-style-type: disc; max-width: 800px; margin: 0 auto; text-align: left;" class="reveal">
+            <ul class="service-list with-icons reveal">
                 <li>
-                    <strong>Maxima eficiencia operativa:</strong> Al automatizar flujos de trabajo internos específicos y eliminar la necesidad de procesos manuales, su personal puede ser mucho más productivo.
+                    <span class="service-icon"><i class="fas fa-gears"></i></span>
+                    <div>
+                        <strong>Maxima eficiencia operativa:</strong> Al automatizar flujos de trabajo internos específicos y eliminar la necesidad de procesos manuales, su personal puede ser mucho más productivo.
+                    </div>
                 </li>
                 <li>
-                    <strong>Ventaja competitiva unica:</strong> Obtiene una herramienta digital exclusiva que resuelve sus problemas de negocio de una manera que su competencia, que utiliza software estándar, no puede replicar.
+                    <span class="service-icon"><i class="fas fa-trophy"></i></span>
+                    <div>
+                        <strong>Ventaja competitiva unica:</strong> Obtiene una herramienta digital exclusiva que resuelve sus problemas de negocio de una manera que su competencia, que utiliza software estándar, no puede replicar.
+                    </div>
                 </li>
                 <li>
-                    <strong>Control total y escalabilidad:</strong> Usted es dueño del código, lo que le permite modificar, escalar y añadir funcionalidades a medida que su negocio evoluciona, sin depender de un proveedor externo o de licencias costosas.
+                    <span class="service-icon"><i class="fas fa-layer-group"></i></span>
+                    <div>
+                        <strong>Control total y escalabilidad:</strong> Usted es dueño del código, lo que le permite modificar, escalar y añadir funcionalidades a medida que su negocio evoluciona, sin depender de un proveedor externo o de licencias costosas.
+                    </div>
                 </li>
                 <li>
-                    <strong>Mejora de la experencia del usuario:</strong> Ya sea para sus empleados o sus clientes, el software diseñado a medida es inherentemente más fácil de usar, lo que reduce la curva de aprendizaje y aumenta la satisfacción.
+                    <span class="service-icon"><i class="fas fa-face-smile"></i></span>
+                    <div>
+                        <strong>Mejora de la experencia del usuario:</strong> Ya sea para sus empleados o sus clientes, el software diseñado a medida es inherentemente más fácil de usar, lo que reduce la curva de aprendizaje y aumenta la satisfacción.
+                    </div>
                 </li>
             </ul>
 
@@ -102,27 +115,23 @@
                         <div class="caracteres-contador"></div>
                     </div>
 
-                    <button type="submit" class="submit-button">
-                        <i class="fas fa-paper-plane"></i> Solicitar Contacto
-                    </button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Solicitar Contacto</button>
                 </form>
             </div>
             
-            <div id="mensaje-exito" style="display: none; text-align: center; padding: 50px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #f4fff4;">
-                <h2 style="color: #4CAF50;">¡Solicitud Enviada con Éxito!</h2>
-                <p style="font-size: 1.1em;">
+            <div id="mensaje-exito" class="success-message">
+                <h2>¡Solicitud Enviada con Éxito!</h2>
+                <p>
                     Gracias por su interés en Desarrollo de software. Su solicitud ha sido recibida correctamente. 
                     Un especialista se pondrá en contacto con usted en las próximas 24 horas.
                 </p>
 
-                <button style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                        onclick="window.location.href = 'index.html';">
+                <button class="btn-success" onclick="window.location.href = 'index.html';">
                     Volver a Servicios Principales
                 </button>
             </div>
         </section>
         
-        </section>
         </div>
     </main>
 
