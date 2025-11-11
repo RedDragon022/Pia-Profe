@@ -1459,6 +1459,23 @@ img.fade-in {
 
 /* --- RESPONSIVIDAD PARA MÓVILES --- */
 @media (max-width: 768px) {
+    /* Evitar superposición del botón de regreso con el título en páginas de servicio */
+    .back-button {
+        top: 12px;
+        left: 12px;
+        transform: none;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        border-width: 1px;
+        border-radius: 12px;
+    }
+
+    /* Cuando existe .back-button, empujar el título hacia abajo */
+    header .back-button ~ h1 {
+        margin-top: 2.75rem;
+        text-align: center;
+    }
+
     .service-layout {
         /* En móviles, las columnas se apilan */
         flex-direction: column;
@@ -1899,6 +1916,11 @@ html[data-theme="dark"] .faq-item { background: rgba(30,27,75,0.75); }
 html[data-theme="dark"] .faq-question:hover { background-color: rgba(129,140,248,0.10); }
 html[data-theme="dark"] .faq-answer { color: #e5e7eb; }
 html[data-theme="dark"] .faq-answer.active { background: rgba(30,27,75,0.45); }
+
+/* Casos de éxito: fondo correcto en modo oscuro (evitar corte/blanco) */
+html[data-theme="dark"] .casos-exito {
+    background: linear-gradient(to bottom, rgba(30,27,75,0.55), rgba(2,6,23,0.0));
+}
 
 /* === Formularios en oscuro === */
 html[data-theme="dark"] .form-group label { color: #e5e7eb; }
